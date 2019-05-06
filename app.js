@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-let port = 8000;
+let port = process.env.PORT || 8000;
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

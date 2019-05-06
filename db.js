@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
 const Users = require('./models/User');
 const Allowedtime = require('./models/Allowedtime');
+let url = process.env.MONGODB_URI || 'mongodb://localhost:27017/snippet';
+mongoose.Promise = global.Promise;
+mongoose.set('debug',true);
 
-mongoose.connect('mongodb://localhost:27017/snippet', { useNewUrlParser: true, useFindAndModify: false })
+mongoose.connect(url ,{ useNewUrlParser: true, useFindAndModify: false })
     .then(db => console.log('db connected'))
     .catch(err => console.log(err));
 const addUsers = async () => {
